@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+	<div ng-app="" ng-init="a=4; b=0;">
+    	<table border=1>
+    		<tr>
+    	    	<td>    
+    	    		<input type="checkbox" ng-model=Add /> Add    
+    	        </td>
+    	        <td ng-if="a != undefined && b != undefined" ng-show=Add>            
+    	    		<strong>{{ a + b }}</strong>   
+    	        </td>
+    		</tr>
+    		<tr>
+    	    	<td>    
+    	    		<input type="checkbox" ng-model=Subtract /> Subtract    
+    	        </td>
+    	        <td ng-if="a != undefined && b != undefined" ng-show=Subtract>            
+    	    		<strong>{{ a - b }}</strong>   
+    	        </td>
+    		</tr>
+    		<tr>
+    	    	<td>   
+    	    		<input type="checkbox" ng-model=Divide /> Divide     
+    	        </td>
+    	        <td ng-if="(a != undefined && b != undefined) && (b > 0 || b < 0)" ng-show=Divide>            
+    	    		<strong>{{ a / b }}</strong>    
+    	        </td>
+    	        <td ng-if="b == 0" ng-show=Divide>            
+    	    		<strong style="color : red;">Division by zero!</strong>    
+    	        </td>
+    		</tr>
+    		<tr>
+    	    	<td>    
+    	    		<input type="checkbox" ng-model=Multiply /> Multiply     
+    	        </td>
+    	        <td ng-if="a != undefined && b != undefined" ng-show=Multiply>            
+    	    		<strong>{{ a * b }}</strong>   
+    	        </td>
+    		</tr>
+    	</table>           
+    	<input type="number" placeholder="a" ng-model="a" value={{a}} required />
+		<input type="number" placeholder="b" ng-model="b" value={{b}} required />  
+	</div>
+</body>
+</html>

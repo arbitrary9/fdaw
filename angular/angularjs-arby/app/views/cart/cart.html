@@ -1,0 +1,29 @@
+
+<div class="container-fluid">
+    
+    <div class="position-relative overflow-hidden text-center bg-light">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <h1 class="display-4 font-weight-normal" ng-show="$parent.favoriteProducts.length > 0">Ваши избранные товары</h1>            
+            <p class="lead font-weight-normal">Вы набрали товаров на сумму: {{calcTotal()}} леев</p>
+            <h1 class="display-4 font-weight-normal" ng-show="$parent.favoriteProducts.length === 0">У вас нету товаров</h1>
+        </div>
+    </div>
+    <div class="products" >
+        <div class="product row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+            ng-repeat="x in $parent.favoriteProducts">
+            <div class="col p-4 d-flex flex-column position-static" ng-init="isClickedFav=true">
+                <strong class="d-inline-block mb-2 text-primary">{{ x.name }}</strong>
+                <h4 class="mb-0">{{ x.description }}</h4>
+                <div class="mb-1 text-muted" ng-non-bindable><s> {{ x.price + getOldPrice() }}lei </s> </div>
+                <p class="card-text mb-auto">{{ x.price }}lei</p>
+                <div class="mb-1 text-muted" ng-repeat="y in x.components">  {{ y.name }} <br/></div>
+                <button type="button" class="btn btn-danger btn-block" ng-show="isClickedFav" ng-click="removeFromFavorites(x); isClickedFav=false">Удалить из избранного</button>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+                <img class="bd-placeholder-img" width="250px" height="250px" src={{x.thumbnailUrl}}
+                    preserveAspectRatio="xMidYMid slice" focusable="false">
+            </div>
+        </div>
+
+    </div>
+</div>

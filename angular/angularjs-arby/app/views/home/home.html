@@ -1,0 +1,43 @@
+<div ng-include="'views/layout/nav.html'"></div>
+    <div ng-show="!isCartShown" class="container-fluid">
+        <div class="position-relative overflow-hidden text-center bg-light">
+            <div class="col-md-5 p-lg-5 mx-auto my-5">
+                <h1 class="display-4 font-weight-normal">Найдите свой ПК</h1>
+                <p class="lead font-weight-normal">Используйте поиск, для подбора нужной конфигурации компьютера</p>
+                <div class="md-form active-cyan active-cyan-2 mb-3">
+                    <input class="form-control" type="text" placeholder="Поиск" aria-label="Search" ng-model="$parent.productSearch">
+                </div>
+                <div class="md-form active-cyan active-cyan-2 mb-3">   
+                    <label for="sortby">Сортировать по полю</label>             
+                    <select class="custom-select" id="sortby" name="study" 
+                    ng-options="x for x in sortingProperties"
+                    ng-model="propertyName"
+                    ng-change="sortBy(propertyName)" required></select>
+                </div>
+            </div>
+            <div class="product-device shadow-sm d-none d-md-block"></div>
+            <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+        </div>
+        <div class="products">
+            <div class="product row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+                ng-repeat="x in $parent.products | filter:productSearch">
+                <div class="col p-4 d-flex flex-column position-static" ng-init="isClickedFav=false">
+                    <strong class="d-inline-block mb-2 text-primary">{{ x.name }}</strong>
+                    <h4 class="mb-0">{{ x.description }}</h4>
+                    <div class="mb-1 text-muted" ng-non-bindable><s> {{ x.price + getOldPrice() }}lei </s> </div>
+                    <p class="card-text mb-auto">{{ x.price }}lei</p>
+                    <div class="mb-1 text-muted" ng-repeat="y in x.components | filter:productSearch">  {{ y.name }} <br/></div>
+                    <button type="button" class="btn btn-primary btn-block" ng-hide="isClickedFav" ng-click="addToFavorites(x); isClickedFav=true" >В избранное</button>
+                    <button type="button" class="btn btn-danger btn-block" ng-show="isClickedFav" ng-click="removeFromFavorites(x); isClickedFav=false">Удалить из избранного</button>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img class="bd-placeholder-img" width="250px" height="250px" src={{x.thumbnailUrl}}
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="isCartShown" class="container-fluid">
+        <div ng-include="'views/cart/cart.html'"></div>
+    </div>
+<div ng-include="'views/layout/footer.html'"></div>

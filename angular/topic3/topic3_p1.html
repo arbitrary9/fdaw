@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+    <div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+        <div class="row">
+            <h3 class="col-lg-4">List of students</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search" ng-model="x.lastname"
+                    title="Enter student last name" />
+            </div>
+        </div>
+        <div class="row">
+            <table class="table col-lg-4">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First name</th>
+                        <th scope="col">Last name</th>
+                        <th scope="col">Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in students | filter : {'lastname' : x.lastname}">
+                        <td>{{ x.id }}</td>
+                        <td>{{ x.firstname }}</td>
+                        <td>{{ x.lastname }}</td>
+                        <td>{{ x.score }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.students = [
+                {
+                    "id": 1,
+                    "firstname": "Viktoria",
+                    "lastname": "Abalina",
+                    "score": 10
+                },
+                {
+                    "id": 2,
+                    "firstname": "Gheorghe",
+                    "lastname": "Glavcev",
+                    "score": 8
+                },
+                {
+                    "id": 3,
+                    "firstname": "Ivan",
+                    "lastname": "Gariuc",
+                    "score": 9
+                },
+                {
+                    "id": 4,
+                    "firstname": "Ivanov",
+                    "lastname": "Alexandr",
+                    "score": 8
+                },
+                {
+                    "id": 5,
+                    "firstname": "Orlioglo",
+                    "lastname": "Veaceslav",
+                    "score": 10
+                },
+                {
+                    "id": 6,
+                    "firstname": "Samvel",
+                    "lastname": "Bareian",
+                    "score": 9
+                },
+                {
+                    "id": 7,
+                    "firstname": "Liviu",
+                    "lastname": "Josan",
+                    "score": 9
+                },
+                {
+                    "id": 8,
+                    "firstname": "Nichita",
+                    "lastname": "Tracenko",
+                    "score": 8
+                },
+                {
+                    "id": 9,
+                    "firstname": "Nichita",
+                    "lastname": "Turcanu",
+                    "score": 6
+                },
+                {
+                    "id": 10,
+                    "firstname": "Nichita",
+                    "lastname": "Pilis",
+                    "score": 7
+                }
+            ];
+        });
+    </script>
+
+</body>
+
+</html>

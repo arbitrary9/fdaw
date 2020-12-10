@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+    <div ng-app="powerApp" ng-controller="powController">
+
+        <h1>255^2: {{ power }}</h1>
+
+    </div>
+    <script>
+        var app = angular.module('powerApp', []);
+
+        app.service('powerService', function () {
+            this.pow = function (x) {
+                return x * x;
+            }
+        });
+        app.controller('powController', function ($scope, powerService) {
+            $scope.power = powerService.pow(255);
+        });
+    </script>
+
+</body>
+
+</html>

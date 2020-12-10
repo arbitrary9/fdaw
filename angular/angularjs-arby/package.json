@@ -1,0 +1,16 @@
+{
+  "name": "angularjs-arby",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Computer shop",
+  "repository": "https://github.com/arbitrary9/angularjs-arby",
+  "scripts": {
+    "update-deps": "npm update",
+    "prestart": "npm install",
+    "start": "http-server ./app"
+  },
+  "dependencies": {
+    "angular": "^1.8.1",
+    "http-server": "^0.12.3"
+  }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	.multiplication-table{
+    	border: 1px solid black;
+        border-spacing:0;
+    }
+	.multiplication-table tr, .multiplication-table th, .multiplication-table td {
+    	border: 1px solid black;
+    	padding: 10px;
+    }
+</style>
+<body>
+ <div ng-app="" ng-init="i;j;h;">
+ 	<p>Таблица умножения</p>
+ 	<table class="multiplication-table">
+        <tr >
+            <th>N</th>
+            <th ng-repeat="h in [1, 2, 3, 4, 5, 6, 7, 8, 9]">{{h}}</th>
+        </tr>
+        <tr ng-repeat="i in [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+            <td><strong>{{i}}</strong></td>
+            <td ng-repeat="j in [1, 2, 3, 4, 5, 6, 7, 8, 9]">{{i*j}}</td>
+        </tr>
+    </table>
+ </div>
+</body>
+</html>
